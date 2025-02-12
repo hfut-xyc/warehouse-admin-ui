@@ -45,11 +45,11 @@ export default {
         if (!valid) {
           return false
         }
-        const res = await postRequest('/login', {
+        const res = await postRequest('/user/login', {
           username: this.loginForm.username,
           password: CryptoJS.SHA256(this.loginForm.password).toString()
         })
-        if (res.data.code === 0) {
+        if (res.data.code === 1) {
           const token = res.data.data
           setToken(token)
           this.$message.success(res.data.message)
@@ -59,9 +59,9 @@ export default {
         }
       });
     },
+    
     reset() {
-      this.loginForm.username = "";
-      this.loginForm.password = "";
+      this.$refs["loginForm"].resetFields()
     }
   }
 };

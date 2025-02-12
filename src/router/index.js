@@ -15,36 +15,41 @@ const routes =  [
   },
   {
     path: '/home',
-    component: () => import('@/views/Home.vue'),
+    component: () => import('@/views/home/index.vue'),
     children: [
-      {
-        path: '',
-        redirect: 'warehouse'
-      },
+      // {
+      //   path: '',
+      //   redirect: 'warehouse'
+      // },
       {
         path: 'warehouse',
         name: '仓库管理',
-        component: () => import('@/views/warehouse/index.vue'),
+        component: () => import('@/views/home/Warehouse'),
+      },
+      {
+        path: 'warehouse/:id',
+        name: '仓库详情',
+        component: () => import('@/views/home/WarehouseDetail'),
       },
       {
         path: 'product',
         name: '产品管理',
-        component: () => import('@/views/product/index.vue'),
+        component: () => import('@/views/home/Product'),
       },
       {
         path: 'user',
         name: '用户管理',
-        component: () => import('@/views/user/index.vue'),
+        component: () => import('@/views/home/User'),
       },
       {
         path: 'order',
         name: '订单管理',
-        component: () => import('@/views/order/index.vue'),
+        component: () => import('@/views/home/Order'),
       },
       {
         path: 'chart',
         name: '数据统计',
-        component: () => import('@/views/chart/index.vue'),
+        component: () => import('@/views/home/Chart'),
       }
     ]
   }

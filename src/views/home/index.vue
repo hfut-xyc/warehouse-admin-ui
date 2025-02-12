@@ -2,7 +2,7 @@
   <el-container>
     <el-aside width="220px">
       <el-menu router :default-active="this.$route.path" text-color="#fff" active-text-color="#ffd04b"
-      background-color="rgb(48,65,86)">
+      background-color="rgb(48,65,86)" >
         <h3 class="logo">仓库信息管理系统</h3>
         <el-menu-item index="/home/warehouse">
           <i class="el-icon-s-home"></i>仓库管理
@@ -26,7 +26,7 @@
       <el-header height="60px">
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item>首页</el-breadcrumb-item>
-          <el-breadcrumb-item v-text="this.$route.name"></el-breadcrumb-item>
+          <el-breadcrumb-item>{{this.$route.name}}</el-breadcrumb-item>
         </el-breadcrumb>
         <el-dropdown @command="logout">
           <div>
@@ -43,7 +43,7 @@
         </el-dropdown>
       </el-header>
       <el-main>
-        <!-- show components here-->
+        <!-- show pages here-->
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -61,28 +61,16 @@ export default {
       this.$router.replace("/login");
       this.$message.success("注销成功");
       console.log("test");
-      
-      // let that = this;
-      // this.$axios
-      //   .get("/logout")
-      //   .then((res) => {
-      //     if (res.data === "success") {
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //     that.$message.error("注销失败");
-      //   });
+    
     },
   },
 };
 </script>
 
 <style>
-.el-aside {
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
+.logo {
+  color: white;
+  text-align: center;
 }
 
 .el-aside::-webkit-scrollbar {
@@ -90,12 +78,8 @@ export default {
 }
 
 .el-menu {
+  /* height: 100%; */
   height: 100vh;
-}
-
-.logo {
-  color: white;
-  text-align: center;
 }
 
 .el-header {

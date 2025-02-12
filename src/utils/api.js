@@ -4,7 +4,7 @@ import { getToken } from '@/utils/token'
 const service = axios.create({
   // baseURL: 'http://localhost:8081/',
   baseURL: '/api',
-  timeout: 3000
+  timeout: 2000
 })
 
 // request interceptor

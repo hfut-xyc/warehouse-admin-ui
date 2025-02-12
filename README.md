@@ -1,8 +1,7 @@
 ## 介绍
-- 本项目是 2020 年 HFUT-CS 数据库课设的前端部分，后端部分代码位于[warehouse-server](https://github.com/hfut-xyc/warehouse-server)
-- 本项目现阶段已停止维护
+- 本项目是 2020 年 HFUT-CS 数据库课设的前端部分，后端部分代码位于 https://github.com/hfut-xyc/warehouse-admin-service
   
-## 项目运行
+## 开发环境运行
 先确保安装了 [Node.js](https://nodejs.org/en/) 最新版本
 ```
 # npm 换源
@@ -15,7 +14,7 @@ npm install
 npm run serve
 ```
 
-## 项目部署
+## 部署运行
 这里只在 Ubuntu 虚拟机上演示如何部署前端项目
 ```
 # 打包项目
