@@ -1,6 +1,6 @@
 <template>
-  <el-container>
-    <div>
+  <div>
+    <div style="display: flex;">
       <el-date-picker v-model="keyword" 
         type="date" 
         align="center" 
@@ -9,8 +9,17 @@
       </el-date-picker>
       <el-button @click="searchOrder()" type="primary" icon="el-icon-search">查询</el-button>
     </div>
+    
+    <div>
+      <el-pagination layout="total, sizes, prev, pager, next, jumper" background 
+        :total="total"
+        :current-page="page" 
+        :page-size="pageSize" 
+        @current-change="onPageChange">
+      </el-pagination>
+    </div>
 
-    <el-table :data="orderList" v-loading="loading" stripe border>
+    <el-table :data="orderList" v-loading="loading" stripe border height="100vh">
       <el-table-column prop="orderId" label="订单ID" sortable fixed width="210"></el-table-column>
       <el-table-column prop="warehouseId" label="仓库ID" sortable></el-table-column>
       <el-table-column prop="warehouseName" label="仓库名" width="200"></el-table-column>
@@ -18,29 +27,16 @@
       <el-table-column prop="productName" label="产品名"></el-table-column>
       <el-table-column prop="userId" label="用户ID" sortable width="120"></el-table-column>
       <el-table-column prop="username" label="用户名" width="120"></el-table-column>
-      <el-table-column prop="count" label="订单数量"></el-table-column>
-      
-      <el-table-column prop="createTime" label="创建时间" sortable width="100"></el-table-column>
-      <!-- <el-table-column prop="updateTime" label="修改时间" sortable width="100"></el-table-column> -->
-
-      <!-- <el-table-column label="操作" width="150" >
+      <el-table-column prop="count" label="订单类型">
         <template slot-scope="scope">
-          <el-button @click="deleteOrder(scope.row)" size="mini" icon="el-icon-delete" type="danger" plain>删除
-          </el-button>
+          <el-tag type="success" v-if="scope.row.count > 0">入库</el-tag>
+          <el-tag type="danger" v-else>出库</el-tag>
         </template>
-      </el-table-column> -->
+      </el-table-column>
+      <el-table-column prop="count" label="订单数量"></el-table-column>
+      <el-table-column prop="createTime" label="创建时间" sortable width="100"></el-table-column>
     </el-table>
-
-    <el-footer>
-      <el-pagination layout="total, sizes, prev, pager, next, jumper" background 
-        style="margin-top: 10px;" 
-        :total="total"
-        :current-page="page" 
-        :page-size="pageSize" 
-        @current-change="onPageChange">
-      </el-pagination>
-    </el-footer>
-  </el-container>
+  </div>
 </template>
 
 <script>

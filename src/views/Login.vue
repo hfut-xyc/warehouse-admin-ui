@@ -37,7 +37,7 @@ export default {
     };
   },
   mounted() {
-    this.refreshCaptcha();
+    
   },
   methods: {
     login() {

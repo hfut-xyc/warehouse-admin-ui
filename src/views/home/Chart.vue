@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 100vh">
     <!-- <ve-line :data="orderChart" :settings="settings"></ve-line>
     <ve-pie :data="productChart"></ve-pie> -->
   </div>

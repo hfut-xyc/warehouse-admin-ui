@@ -1,12 +1,21 @@
 <template>
-  <el-container>
-    <div>
+  <div>
+    <div style="display: flex;">
       <el-input v-model="keyword" placeholder="按产品名搜索" prefix-icon="el-icon-search"></el-input>
       <el-button @click="searchProduct()" type="primary" icon="el-icon-search">查询</el-button>
       <el-button @click="isDialogVisible = true" type="success" icon="el-icon-plus">添加新产品</el-button>
     </div>
 
-    <el-table :data="productList" v-loading="loading" stripe border>
+    <div>
+      <el-pagination layout="total, prev, pager, next, jumper" background 
+          :total="total"
+          :current-page="page" 
+          :page-size="pageSize" 
+          @current-change="onPageChange">
+      </el-pagination>
+    </div>
+
+    <el-table :data="productList" v-loading="loading" stripe border height="100vh">
       <el-table-column prop="productId" label="产品ID" sortable></el-table-column>
       <el-table-column prop="productName" label="产品名"></el-table-column>
       <el-table-column prop="createTime" label="创建时间" sortable width="100"></el-table-column>
@@ -19,15 +28,6 @@
         </template>
       </el-table-column>
     </el-table>
-
-    <el-footer>
-      <el-pagination style="margin-top: 10px;" layout="total, prev, pager, next, jumper" background 
-        :total="total"
-        :current-page="page" 
-        :page-size="pageSize" 
-        @current-change="onPageChange">
-      </el-pagination>
-    </el-footer>
 
     <el-dialog title="添加新产品" :visible.sync="isDialogVisible">
       <el-form ref="addForm" :model="addForm" :rules="rules" label-width="120px">
@@ -45,7 +45,7 @@
         <el-button @click="isDialogVisible = false">取消</el-button>
       </div>
     </el-dialog>
-  </el-container>
+  </div>
 </template>
 
 <script>

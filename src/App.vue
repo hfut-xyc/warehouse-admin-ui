@@ -5,6 +5,10 @@
 </template>
 
 <style>
+.el-pagination {
+  margin-top: 10px;
+}
+
 .el-table {
   margin-top: 10px;
 }

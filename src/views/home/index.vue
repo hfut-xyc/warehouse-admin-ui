@@ -23,7 +23,7 @@
     </el-aside>
 
     <el-container>
-      <el-header height="60px">
+      <el-header>
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item>首页</el-breadcrumb-item>
           <el-breadcrumb-item>{{this.$route.name}}</el-breadcrumb-item>
@@ -42,8 +42,8 @@
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
+      <!-- show pages here-->
       <el-main>
-        <!-- show pages here-->
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -78,14 +78,18 @@ export default {
 }
 
 .el-menu {
-  /* height: 100%; */
-  height: 100vh;
+  height: 100%;
 }
 
 .el-header {
   display: flex;
   align-items: center;
+  height: 60px;
   border-bottom: 1px solid #ededed;
+}
+
+.el-main {
+  height: 100vh;
 }
 
 .el-dropdown {
