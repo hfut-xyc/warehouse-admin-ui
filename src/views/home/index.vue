@@ -29,16 +29,13 @@
           <el-breadcrumb-item>{{this.$route.name}}</el-breadcrumb-item>
         </el-breadcrumb>
         <el-dropdown @command="logout">
-          <div>
-            <el-avatar src="" style="margin-right: 5px"></el-avatar>
-            <label style="font-weight: bold">{{
-              this.$store.state.currentUser
-            }}</label>
-          </div>
+          <span class="el-dropdown-link">
+            admin
+            {{this.$store.state.currentUser}}
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>
-              <i class="el-icon-delete"></i>退出登录
-            </el-dropdown-item>
+            <el-dropdown-item>退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
@@ -55,6 +52,11 @@ import {removeToken} from '@/utils/token'
 
 export default {
   name: "Home",
+  data() {
+    return {
+      avatar: ""
+    }
+  },
   methods: {
     logout() {
       removeToken()
@@ -88,13 +90,35 @@ export default {
   border-bottom: 1px solid #ededed;
 }
 
-.el-main {
-  height: 100vh;
+.el-dropdown-link {
+  color: #409EFF;
 }
 
 .el-dropdown {
   cursor: pointer;
   margin-left: auto;
+}
+
+.el-main {
+  height: 100vh;
+}
+
+.input-panel {
+  display: flex;
+  align-items: center;
+}
+
+.el-input {
+  width: 250px;
+  margin-right: 15px;
+}
+
+.el-pagination {
+  margin-top: 10px;
+}
+
+.el-table {
+  margin-top: 10px;
 }
 
 </style>

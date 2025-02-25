@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="display: flex;">
+    <div class="input-panel">
       <el-date-picker v-model="keyword" 
         type="date" 
         align="center" 

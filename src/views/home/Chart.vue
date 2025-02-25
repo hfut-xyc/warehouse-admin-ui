@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100vh">
+  <div>
     <!-- <ve-line :data="orderChart" :settings="settings"></ve-line>
     <ve-pie :data="productChart"></ve-pie> -->
   </div>
@@ -8,7 +8,7 @@
 <script>
 export default {
   name: "Chart",
-  data: function () {
+  data() {
     return {
       settings: {
         labelMap: {

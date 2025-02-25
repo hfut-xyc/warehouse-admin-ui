@@ -1,6 +1,6 @@
 ﻿<template>
   <div>
-    <div style="display: flex">
+    <div class="input-panel"> 
       <el-input v-model="keyword" placeholder="通过用户名搜索" prefix-icon="el-icon-search"></el-input>
       <el-button @click="searchUser()" type="primary" icon="el-icon-search" >查询</el-button>
       <el-button @click="isDialogVisible = true" type="success" icon="el-icon-plus">添加新用户</el-button>

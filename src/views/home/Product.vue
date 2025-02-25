@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="display: flex;">
+    <div class="input-panel">
       <el-input v-model="keyword" placeholder="按产品名搜索" prefix-icon="el-icon-search"></el-input>
       <el-button @click="searchProduct()" type="primary" icon="el-icon-search">查询</el-button>
       <el-button @click="isDialogVisible = true" type="success" icon="el-icon-plus">添加新产品</el-button>
@@ -16,7 +16,7 @@
     </div>
 
     <el-table :data="productList" v-loading="loading" stripe border height="100vh">
-      <el-table-column prop="productId" label="产品ID" sortable></el-table-column>
+      <el-table-column prop="productId" label="产品ID" sortable width="200"></el-table-column>
       <el-table-column prop="productName" label="产品名"></el-table-column>
       <el-table-column prop="createTime" label="创建时间" sortable width="100"></el-table-column>
       <el-table-column prop="updateTime" label="修改时间" sortable width="100"></el-table-column>

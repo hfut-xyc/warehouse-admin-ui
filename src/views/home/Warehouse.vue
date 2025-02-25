@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="input-panel">
       <el-input v-model="keyword" placeholder="按仓库名搜索" prefix-icon="el-icon-search"></el-input>
       <el-button @click="searchWarehouse()" type="primary" icon="el-icon-search">查询</el-button>
       <el-button @click="isDialogVisible = true" type="success" icon="el-icon-plus">添加新仓库</el-button>
@@ -16,7 +16,7 @@
     </div>
 
     <el-table :data="warehouseList" v-loading="loading" stripe border height="100vh">
-      <el-table-column prop="warehouseId" label="仓库ID" sortable width="150"></el-table-column>
+      <el-table-column prop="warehouseId" label="仓库ID" sortable width="200"></el-table-column>
       <el-table-column prop="warehouseName" label="仓库名" width="250"></el-table-column>
       <el-table-column prop="createTime" label="创建时间" sortable width="100"></el-table-column>
       <el-table-column prop="updateTime" label="修改时间" width="100"></el-table-column>
@@ -54,7 +54,7 @@ import { getRequest, postRequest, deleteRequest } from "@/utils/api"
 
 export default {
   name: "Warehouse",
-  data: function () {
+  data() {
     return {
       total: 0, // 查询到的用户总数
       page: 1, // 当前页码
@@ -75,7 +75,7 @@ export default {
     };
   },
   
-  mounted: function () {
+  mounted() {
     this.loadWarehouseList();
   },
 
