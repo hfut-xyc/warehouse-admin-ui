@@ -1,9 +1,11 @@
 <template>
-  <el-container>
-    <el-aside width="220px">
+  <div class="container">
+    <!-- <el-aside width="220px">
+    </el-aside> -->
+    <div class="side-container">
+      <div class="logo">仓库信息管理系统</div>
       <el-menu router :default-active="this.$route.path" text-color="#fff" active-text-color="#ffd04b"
       background-color="rgb(48,65,86)" >
-        <h3 class="logo">仓库信息管理系统</h3>
         <el-menu-item index="/home/warehouse">
           <i class="el-icon-s-home"></i>仓库管理
         </el-menu-item>
@@ -20,9 +22,9 @@
           <i class="el-icon-data-line"></i>数据统计
         </el-menu-item>
       </el-menu>
-    </el-aside>
+    </div>
 
-    <el-container>
+    <div class="main-container">
       <el-header>
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item>首页</el-breadcrumb-item>
@@ -40,11 +42,11 @@
         </el-dropdown>
       </el-header>
       <!-- show pages here-->
-      <el-main>
+      <div>
         <router-view></router-view>
-      </el-main>
-    </el-container>
-  </el-container>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -70,17 +72,43 @@ export default {
 </script>
 
 <style>
-.logo {
-  color: white;
-  text-align: center;
-}
-
-.el-aside::-webkit-scrollbar {
-  display: none;
-}
 
 .el-menu {
   height: 100%;
+}
+
+.container {
+  height: 100%;
+  /* position: relative; */
+}
+
+.side-container {
+  height: 100%;
+  width: 220px;
+  position: fixed;
+}
+
+.logo {
+  color: white;
+  background-color: rgb(48,65,86);
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  width: 220px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.el-menu{
+  overflow: hidden;
+}
+
+.main-container {
+  height: 100%;
+  /* position: absolute; */
+  margin-left: 230px;
+  overflow: hidden;
+
 }
 
 .el-header {
@@ -90,6 +118,7 @@ export default {
   border-bottom: 1px solid #ededed;
 }
 
+
 .el-dropdown-link {
   color: #409EFF;
 }
@@ -97,10 +126,6 @@ export default {
 .el-dropdown {
   cursor: pointer;
   margin-left: auto;
-}
-
-.el-main {
-  height: 100vh;
 }
 
 .input-panel {

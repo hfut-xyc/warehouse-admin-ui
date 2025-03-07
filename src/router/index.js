@@ -27,11 +27,6 @@ const routes =  [
         component: () => import('@/views/home/Warehouse'),
       },
       {
-        path: 'warehouse/:id',
-        name: '仓库详情',
-        component: () => import('@/views/home/WarehouseDetail'),
-      },
-      {
         path: 'product',
         name: '产品管理',
         component: () => import('@/views/home/Product'),
