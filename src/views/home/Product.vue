@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="input-panel">
+    <div class="input-container">
       <el-input v-model="keyword" placeholder="按产品名搜索" prefix-icon="el-icon-search"></el-input>
       <el-button @click="searchProduct()" type="primary" icon="el-icon-search">查询</el-button>
       <el-button @click="isDialogVisible = true" type="success" icon="el-icon-plus">添加新产品</el-button>
@@ -8,18 +8,18 @@
 
     <div>
       <el-pagination layout="total, prev, pager, next, jumper" background 
-          :total="total"
-          :current-page="page" 
-          :page-size="pageSize" 
-          @current-change="onPageChange">
+        :total="total"
+        :current-page="page" 
+        :page-size="pageSize" 
+        @current-change="onPageChange">
       </el-pagination>
     </div>
 
     <el-table :data="productList" v-loading="loading" stripe border height="100vh">
       <el-table-column prop="productId" label="产品ID" sortable width="200"></el-table-column>
       <el-table-column prop="productName" label="产品名"></el-table-column>
-      <el-table-column prop="createTime" label="创建时间" sortable width="100"></el-table-column>
-      <el-table-column prop="updateTime" label="修改时间" sortable width="100"></el-table-column>
+      <el-table-column prop="createTime" label="创建时间" sortable width="110"></el-table-column>
+      <el-table-column prop="updateTime" label="修改时间" sortable width="110"></el-table-column>
       <!-- 操作 -->
       <el-table-column label="操作">
         <template slot-scope="scope">

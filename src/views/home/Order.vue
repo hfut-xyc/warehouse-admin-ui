@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="input-panel">
+    <div class="input-container">
       <el-date-picker v-model="keyword" 
         type="date" 
         align="center" 
@@ -11,7 +11,7 @@
     </div>
     
     <div>
-      <el-pagination layout="total, sizes, prev, pager, next, jumper" background 
+      <el-pagination layout="total, prev, pager, next, jumper" background 
         :total="total"
         :current-page="page" 
         :page-size="pageSize" 
