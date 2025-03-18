@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="side-container">
+    <el-scrollbar class="side-container">
       <div class="title">仓库信息管理系统</div>
       <el-menu router :default-active="this.$route.path" 
         text-color="#fff" 
@@ -22,7 +22,7 @@
           <i class="el-icon-data-line"></i>数据统计
         </el-menu-item>
       </el-menu>
-    </div>
+    </el-scrollbar>
 
     <div class="main-container">
       <div class="header-container">
@@ -77,30 +77,33 @@ export default {
   height: 100%;
   width: 220px;
   position: fixed;
+  overflow-y: hidden;
 }
 
 .main-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
   height: 100vh;
   margin-left: 230px;
-  overflow: hidden;
+  margin-right: 10px;
 }
 
 .header-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 60px;
   border-bottom: 1px solid #ededed;
 }
 
-.view-container {
-  height: 100vh;
-  margin: 10px 10px;
+.view-container, .el-pagination, .el-table {
+  margin-top: 10px;
 }
 
 .title {
   width: 220px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  line-height: 60px;
   font-size: 20px;
   text-align: center;
   font-weight: bold;
@@ -109,14 +112,11 @@ export default {
 }
 
 .el-menu {
-  height: 100%;
-  overflow: hidden;
+  height: 100vh;
 }
 
 .el-dropdown {
   cursor: pointer;
-  margin-left: auto;
-  margin-right: 10px;
 }
 
 .el-dropdown-link {
@@ -131,14 +131,6 @@ export default {
 .el-input {
   width: 250px;
   margin-right: 10px;
-}
-
-.el-pagination {
-  margin-top: 10px;
-}
-
-.el-table {
-  margin-top: 10px;
 }
 
 </style>
