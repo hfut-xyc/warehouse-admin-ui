@@ -5,8 +5,8 @@
       <el-button @click="searchWarehouse()" type="primary" icon="el-icon-search">查询</el-button>
       <el-button @click="isDialogVisible = true" type="success" icon="el-icon-plus">添加新仓库</el-button>
     </div>
-
-    <div>
+    
+    <div class="input-container">
       <el-pagination layout="total, prev, pager, next, jumper" background
         :total="total"
         :current-page="page" 
@@ -15,7 +15,7 @@
       </el-pagination>
     </div>
 
-    <el-table :data="warehouseList" v-loading="loading" stripe border height="100vh">
+    <el-table :data="warehouseList" v-loading="loading" stripe border height="800">
       <el-table-column prop="warehouseId" label="仓库ID" sortable width="200"></el-table-column>
       <el-table-column prop="warehouseName" label="仓库名" width="250"></el-table-column>
       <el-table-column prop="createTime" label="创建时间" sortable width="110"></el-table-column>

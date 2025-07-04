@@ -15,7 +15,7 @@ const routes =  [
   },
   {
     path: '/home',
-    component: () => import('@/views/home/index.vue'),
+    component: () => import('@/views/Home.vue'),
     children: [
       // {
       //   path: '',

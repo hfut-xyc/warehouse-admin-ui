@@ -5,5 +5,7 @@
 </template>
 
 <style>
-
+html {
+  overflow: auto;
+}
 </style>

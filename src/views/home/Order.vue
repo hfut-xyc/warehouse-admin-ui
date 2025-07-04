@@ -10,7 +10,7 @@
       <el-button @click="searchOrder()" type="primary" icon="el-icon-search">查询</el-button>
     </div>
     
-    <div>
+    <div class="input-container">
       <el-pagination layout="total, prev, pager, next, jumper" background 
         :total="total"
         :current-page="page" 

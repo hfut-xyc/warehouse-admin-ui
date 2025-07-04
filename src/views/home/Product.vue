@@ -6,7 +6,7 @@
       <el-button @click="isDialogVisible = true" type="success" icon="el-icon-plus">添加新产品</el-button>
     </div>
 
-    <div>
+    <div class="input-container">
       <el-pagination layout="total, prev, pager, next, jumper" background 
         :total="total"
         :current-page="page" 
