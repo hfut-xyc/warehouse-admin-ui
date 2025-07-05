@@ -1,24 +1,9 @@
 <template>
-  <div>
-    <div class="header-container">
-      <div class="title">仓库管理系统</div>
-      <el-menu mode="horizontal" router :default-active="this.$route.path">
-        <el-menu-item index="/home/warehouse">
-          <i class="el-icon-s-home"></i>仓库管理
-        </el-menu-item>
-        <el-menu-item index="/home/product">
-          <i class="el-icon-coin"></i>产品管理
-        </el-menu-item>
-        <el-menu-item index="/home/user">
-          <i class="el-icon-user"></i>用户管理
-        </el-menu-item>
-        <el-menu-item index="/home/order">
-          <i class="el-icon-money"></i>订单列表
-        </el-menu-item>
-        <el-menu-item index="/home/chart">
-          <i class="el-icon-data-line"></i>数据统计
-        </el-menu-item>
-      </el-menu>
+  <div class="home">
+  <el-container>
+
+    <el-header>
+      <span class="title">仓库信息管理系统</span>
       <el-dropdown @command="logout">
         <span class="el-dropdown-link">
           admin
@@ -29,14 +14,44 @@
           <el-dropdown-item>退出登录</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-    </div>
-    <el-card class="main-container">
-      <div slot="header">
-        <span class="route-name">{{this.$route.name}}</span>
-      </div>
-      <router-view></router-view>
-    </el-card>
+    </el-header>
 
+    <el-container>
+      <el-aside width="210px">
+        <el-menu router :default-active="this.$route.path" 
+                  background-color="#333744"
+          text-color="#fff"
+          active-text-color="#409EFF">
+          <el-menu-item index="/home/warehouse">
+            <i class="el-icon-s-home"></i>仓库管理
+          </el-menu-item>
+          <el-menu-item index="/home/product">
+            <i class="el-icon-coin"></i>产品管理
+          </el-menu-item>
+          <el-menu-item index="/home/user">
+            <i class="el-icon-user"></i>用户管理
+          </el-menu-item>
+          <el-menu-item index="/home/order">
+            <i class="el-icon-money"></i>订单列表
+          </el-menu-item>
+          <el-menu-item index="/home/chart">
+            <i class="el-icon-data-line"></i>数据统计
+          </el-menu-item>
+        </el-menu>
+      </el-aside>
+
+      <el-main>
+        <el-card>
+          <div slot="header">
+            <span class="route-name">{{this.$route.name}}</span>
+          </div>
+        <router-view></router-view>
+        </el-card>
+      </el-main>
+      
+    </el-container>
+
+  </el-container>
   </div>
 </template>
 
@@ -62,41 +77,42 @@ export default {
 };
 </script>
 
-<style>
-.header-container {
+<style lang="scss">
+html, body, #app, .el-container, .home {
+  height: 100%;
+}
+
+.el-header{
   display: flex;
   align-items: center;
-  position: sticky;
   justify-content: space-between;
-  border-bottom: 1px solid #ededed;
+  background-color: #333744;
+  /* border-bottom: 1px solid #ededed; */
+  > span {
+    width: 200px;
+    line-height: 60px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
+  > .el-dropdown {
+    cursor: pointer;
+    > span {
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+    }
+  }
 }
 
-.title {
-  width: 200px;
-  line-height: 60px;
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
-  color: #409EFF;
-  background-color: white;
-}
-
-.el-dropdown {
-  cursor: pointer;
-}
-
-.el-dropdown-link {
-  color: #409EFF;
-  font-weight: bold;
+.el-aside {
+  background-color: #333744;
 }
 
 .route-name {
+  color: #333744;
   font-weight: bold;
-}
-
-.main-container {
-  margin: 10px;
-  height: 100%;
 }
 
 .input-container {
