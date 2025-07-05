@@ -10,16 +10,7 @@
       <el-button @click="searchOrder()" type="primary" icon="el-icon-search">查询</el-button>
     </div>
     
-    <div class="input-container">
-      <el-pagination layout="total, prev, pager, next, jumper" background 
-        :total="total"
-        :current-page="page" 
-        :page-size="pageSize" 
-        @current-change="onPageChange">
-      </el-pagination>
-    </div>
-
-    <el-table :data="orderList" v-loading="loading" stripe border height="100vh">
+    <el-table :data="orderList" v-loading="loading" stripe border>
       <el-table-column prop="orderId" label="订单ID" sortable fixed width="210"></el-table-column>
       <el-table-column prop="warehouseId" label="仓库ID" sortable></el-table-column>
       <el-table-column prop="warehouseName" label="仓库名" width="200"></el-table-column>
@@ -36,6 +27,13 @@
       <el-table-column prop="count" label="订单数量"></el-table-column>
       <el-table-column prop="createTime" label="创建时间" sortable width="100"></el-table-column>
     </el-table>
+
+    <el-pagination layout="total, prev, pager, next, jumper" background 
+      :total="total"
+      :current-page="page" 
+      :page-size="pageSize" 
+      @current-change="onPageChange">
+    </el-pagination>
   </div>
 </template>
 

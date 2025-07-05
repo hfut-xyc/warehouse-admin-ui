@@ -1,11 +1,7 @@
 <template>
   <div>
     <div class="header-container">
-      <div class="title">仓库信息管理系统</div>
-      <!-- <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item>首页</el-breadcrumb-item>
-        <el-breadcrumb-item>{{this.$route.name}}</el-breadcrumb-item>
-      </el-breadcrumb> -->
+      <div class="title">仓库管理系统</div>
       <el-menu mode="horizontal" router :default-active="this.$route.path">
         <el-menu-item index="/home/warehouse">
           <i class="el-icon-s-home"></i>仓库管理
@@ -34,8 +30,10 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-
     <el-card class="main-container">
+      <div slot="header">
+        <span class="route-name">{{this.$route.name}}</span>
+      </div>
       <router-view></router-view>
     </el-card>
 
@@ -49,7 +47,7 @@ export default {
   name: "Home",
   data() {
     return {
-      avatar: ""
+      // avatar: ""
     }
   },
   methods: {
@@ -92,35 +90,19 @@ export default {
   font-weight: bold;
 }
 
-.el-scrollbar__wrap {
-  overflow: auto;
+.route-name {
+  font-weight: bold;
 }
 
-.side-container {
-  /* height: 100vh; */
-  /* /* height: 100%; */
-  /* width: 220px; */
-  /* position: absolute; */
-  /* overflow-x: hidden; */
-}
-
-.el-menu {
-  /* height: 100vh; */
-}
-
-.main-container{
-  /* height: 100%; */
-  /* margin-top: 10px; */
-  /* margin-left: 10px; */
-  display: block;
-  text-align: center;
-  margin: 20px;
+.main-container {
+  margin: 10px;
   height: 100%;
 }
 
 .input-container {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .el-input {
@@ -128,4 +110,7 @@ export default {
   margin-right: 10px;
 }
 
+.el-pagination {
+  margin-top: 10px;
+}
 </style>

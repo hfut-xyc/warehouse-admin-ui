@@ -6,16 +6,7 @@
       <el-button @click="isDialogVisible = true" type="success" icon="el-icon-plus">添加新产品</el-button>
     </div>
 
-    <div class="input-container">
-      <el-pagination layout="total, prev, pager, next, jumper" background 
-        :total="total"
-        :current-page="page" 
-        :page-size="pageSize" 
-        @current-change="onPageChange">
-      </el-pagination>
-    </div>
-
-    <el-table :data="productList" v-loading="loading" stripe border height="100vh">
+    <el-table :data="productList" v-loading="loading" stripe border>
       <el-table-column prop="productId" label="产品ID" sortable width="200"></el-table-column>
       <el-table-column prop="productName" label="产品名"></el-table-column>
       <el-table-column prop="createTime" label="创建时间" sortable width="110"></el-table-column>
@@ -29,6 +20,13 @@
       </el-table-column>
     </el-table>
 
+    <el-pagination layout="total, prev, pager, next, jumper" background 
+      :total="total"
+      :current-page="page" 
+      :page-size="pageSize" 
+      @current-change="onPageChange">
+    </el-pagination>
+    
     <el-dialog title="添加新产品" :visible.sync="isDialogVisible">
       <el-form ref="addForm" :model="addForm" :rules="rules" label-width="120px">
         <el-form-item label="产品ID" prop="productId">

@@ -17,10 +17,10 @@ const routes =  [
     path: '/home',
     component: () => import('@/views/Home.vue'),
     children: [
-      // {
-      //   path: '',
-      //   redirect: 'warehouse'
-      // },
+      {
+        path: '',
+        redirect: 'warehouse'
+      },
       {
         path: 'warehouse',
         name: '仓库管理',

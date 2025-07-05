@@ -6,16 +6,7 @@
       <el-button @click="isDialogVisible = true" type="success" icon="el-icon-plus">添加新用户</el-button>
     </div>
 
-    <div class="input-container">
-      <el-pagination layout="total, prev, pager, next, jumper" background 
-        :total="total"
-        :current-page="page" 
-        :page-size="pageSize" 
-        @current-change="onPageChange">
-      </el-pagination>
-    </div>
-
-    <el-table :data="userList" v-loading="loading" stripe border height="100vh">
+    <el-table :data="userList" v-loading="loading" stripe border>
       <el-table-column prop="userId" label="用户ID" sortable width="200"></el-table-column>
       <el-table-column prop="username" label="用户名" width="200"></el-table-column>
       <el-table-column prop="role" label="用户角色" width="200">
@@ -33,6 +24,13 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <el-pagination layout="total, prev, pager, next, jumper" background 
+      :total="total"
+      :current-page="page" 
+      :page-size="pageSize" 
+      @current-change="onPageChange">
+    </el-pagination>
 
     <!-- 添加用户对话框 -->
     <el-dialog title="添加新用户" :visible.sync="isDialogVisible">
@@ -82,7 +80,7 @@ export default {
       page: 1, // 当前页码
       pageSize: 10,
       keyword: "", // 查询用户名的关键字
-      loading: false, // 页面表格是否处于加载状态
+      loading: true, // 页面表格是否处于加载状态
       isDialogVisible: false, // 添加用户的对话框是否可见
       // 添加用户表单
       addForm: {
@@ -120,21 +118,24 @@ export default {
   methods: {
     async loadUserList() {
       this.loading = true;
-      const res = await postRequest("/user/list", {
-        page: this.page,
-        pageSize: this.pageSize,
-        keyword: this.keyword.trim() === "" ? null : this.keyword.trim(),
-      });
-      console.log(res);
-      
-      if (res.data.code === 1) {
-        this.total = res.data.data.total;
-        this.userList = res.data.data.userList;
-        this.$message.success(res.data.message);
-      } else {
-        this.$message.error(res.data.message);
+      try {
+        const res = await postRequest("/user/list", {
+          page: this.page,
+          pageSize: this.pageSize,
+          keyword: this.keyword.trim() === "" ? null : this.keyword.trim(),
+        });
+        console.log(res);
+        
+        if (res.data.code === 1) {
+          this.total = res.data.data.total;
+          this.userList = res.data.data.userList;
+          this.$message.success(res.data.message);
+        }
+      } catch (e) {
+        this.$message.error('接口异常')
+      } finally {
+        this.loading = false
       }
-      this.loading = false;
     },
 
     searchUser() {
